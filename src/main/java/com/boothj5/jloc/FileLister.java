@@ -1,3 +1,5 @@
+package com.boothj5.jloc;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;

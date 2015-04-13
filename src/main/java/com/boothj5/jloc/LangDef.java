@@ -1,8 +1,6 @@
-import java.util.List;
+package com.boothj5.jloc;
 
-/*
- * Copyright 2013 Corelogic Ltd All Rights Reserved.
- */
+import java.util.List;
 
 public class LangDef {
 

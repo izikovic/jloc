@@ -1,6 +1,4 @@
-/*
- * Copyright 2013 Corelogic Ltd All Rights Reserved.
- */
+package com.boothj5.jloc;
 
 public class BlockComment {
     private final String start;

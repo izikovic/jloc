@@ -1,10 +1,8 @@
+package com.boothj5.jloc;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-/*
- * Copyright 2013 Corelogic Ltd All Rights Reserved.
- */
 
 public class Configuration {
 
