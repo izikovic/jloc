@@ -8,13 +8,17 @@
     > find . -type f | wc -l
     > 62
 
-2) Count lines recursively in directory
+2) Count files, and lines recursively in directory
 
     test/resources/filecount
+    > find . -type f | wc -l
+    > 12
     > find . -type f -exec cat {} + | wc -l
     > 16
 
     test/resources/minions
+    > find . -type f | wc -l
+    > 62
     > find . -type f -exec cat {} + | wc -l
     > 4034
 
