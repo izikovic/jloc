@@ -6,7 +6,7 @@ import com.boothj5.jloc.languages.LangDef;
 
 import java.io.IOException;
 
-public class JavaCodeCounter {
+public class JavaCodeCounterApp {
     private static final String PROJECT_ROOT = "/Users/cirrus/projects-git/jloc/";
 
     public static void main(String[] args) throws IOException {
