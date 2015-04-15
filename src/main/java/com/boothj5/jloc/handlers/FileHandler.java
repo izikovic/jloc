@@ -19,19 +19,20 @@ public class FileHandler {
     }
 
     public int fileCount() throws IOException {
-        if (!handled) {
-            count(file.toPath());
-        }
-        handled = true;
+        startCount();
         return files;
     }
 
     public int lineCount() throws IOException {
+        startCount();
+        return lines;
+    }
+
+    private void startCount() throws IOException {
         if (!handled) {
             count(file.toPath());
         }
         handled = true;
-        return lines;
     }
 
     private void count(Path path) throws IOException {

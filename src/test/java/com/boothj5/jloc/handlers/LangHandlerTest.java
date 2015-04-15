@@ -56,4 +56,19 @@ public class LangHandlerTest {
 
         assertEquals(1978, result);
     }
+
+    @Test
+    public void shouldReturnJavaStats() throws IOException {
+        LangHandler langHandler = new LangHandler("/home/boothj5/projects-git/jloc/src/test/resources/minions", javaLang);
+
+        int files = langHandler.files();
+        int code = langHandler.code();
+        int comments = langHandler.comments();
+        int blanks = langHandler.blanks();
+
+        assertEquals(39, files);
+        assertEquals(1978, code);
+        assertEquals(264, comments);
+        assertEquals(436, blanks);
+    }
 }

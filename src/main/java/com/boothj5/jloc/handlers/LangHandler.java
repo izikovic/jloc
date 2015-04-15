@@ -25,35 +25,30 @@ public class LangHandler {
     }
 
     public int files() throws IOException {
-        if (!handled) {
-            count(file.toPath());
-        }
-        handled = true;
+        startCount();
         return files;
     }
 
     public int blanks() throws IOException {
-        if (!handled) {
-            count(file.toPath());
-        }
-        handled = true;
+        startCount();
         return blanks;
     }
 
     public int comments() throws IOException {
-        if (!handled) {
-            count(file.toPath());
-        }
-        handled = true;
+        startCount();
         return comments;
     }
 
     public int code() throws IOException {
+        startCount();
+        return code;
+    }
+
+    private void startCount() throws IOException {
         if (!handled) {
             count(file.toPath());
         }
         handled = true;
-        return code;
     }
 
     private void count(Path path) throws IOException {
@@ -69,27 +64,32 @@ public class LangHandler {
 
                     boolean inComment = false;
                     while (line != null) {
-                        if (!inComment && line.trim().startsWith(langDef.getBlockComment().getStart())) {
-                            inComment = true;
-                            comments++;
-                        } else if (inComment && line.trim().endsWith(langDef.getBlockComment().getEnd())) {
-                            inComment = false;
-                            comments++;
-                        } else if (inComment && !"".equals(line.trim())) {
-                            comments++;
-                        } else if (line.trim().startsWith(langDef.getLineComment())) {
-                            comments++;
-                        } else if (line.trim().equals("")) {
-                            blanks++;
-                        } else {
-                            code++;
-                        }
-
+                        inComment = processLine(line, inComment);
                         line = bufferedReader.readLine();
                     }
+
                     bufferedReader.close();
                 }
             }
         }
+    }
+
+    private boolean processLine(String line, boolean inComment) {
+        if (!inComment && line.trim().startsWith(langDef.getBlockComment().getStart())) {
+            inComment = true;
+            comments++;
+        } else if (inComment && line.trim().endsWith(langDef.getBlockComment().getEnd())) {
+            inComment = false;
+            comments++;
+        } else if (inComment && !"".equals(line.trim())) {
+            comments++;
+        } else if (line.trim().startsWith(langDef.getLineComment())) {
+            comments++;
+        } else if (line.trim().equals("")) {
+            blanks++;
+        } else {
+            code++;
+        }
+        return inComment;
     }
 }
