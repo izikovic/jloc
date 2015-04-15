@@ -35,4 +35,13 @@ public class LangHandlerTest {
 
         assertEquals(39, result);
     }
+
+    @Test
+    public void shouldReturnJavaBlankCount() throws IOException {
+        LangHandler langHandler = new LangHandler("/home/boothj5/projects-git/jloc/src/test/resources/minions", javaLang);
+
+        int result = langHandler.blanks();
+
+        assertEquals(435, result);
+    }
 }

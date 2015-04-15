@@ -22,6 +22,7 @@ public class FileHandler {
         if (!handled) {
             count(file.toPath());
         }
+        handled = true;
         return files;
     }
 
@@ -29,6 +30,7 @@ public class FileHandler {
         if (!handled) {
             count(file.toPath());
         }
+        handled = true;
         return lines;
     }
 
