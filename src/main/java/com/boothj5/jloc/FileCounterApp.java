@@ -1,5 +1,7 @@
 package com.boothj5.jloc;
 
+import com.boothj5.jloc.handlers.FileHandler;
+
 import java.io.IOException;
 
 public class FileCounterApp {

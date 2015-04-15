@@ -1,5 +1,6 @@
-package com.boothj5.jloc;
+package com.boothj5.jloc.handlers;
 
+import com.boothj5.jloc.handlers.FileHandler;
 import org.junit.Test;
 
 import java.io.IOException;

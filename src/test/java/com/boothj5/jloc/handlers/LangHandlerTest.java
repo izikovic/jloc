@@ -1,14 +1,22 @@
-package com.boothj5.jloc;
+package com.boothj5.jloc.handlers;
 
-import com.boothj5.jloc.handlers.LangHandler;
 import com.boothj5.jloc.languages.BlockComment;
 import com.boothj5.jloc.languages.LangDef;
+import org.junit.Before;
+import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JavaCodeCounter {
-    public static void main(String[] args) {
+import static org.junit.Assert.assertEquals;
+
+public class LangHandlerTest {
+
+    private LangDef javaLang;
+
+    @Before
+    public void setup() {
         List<String> lineComments = new ArrayList<>();
         lineComments.add("//");
 
@@ -16,13 +24,15 @@ public class JavaCodeCounter {
         List<BlockComment> blockComments = new ArrayList<>();
         blockComments.add(blockComment);
 
-        LangDef javaLang = new LangDef("Java", "java", lineComments, blockComments);
+        javaLang = new LangDef("Java", "java", lineComments, blockComments);
+    }
 
+    @Test
+    public void shouldReturnJavaFileCount() throws IOException {
         LangHandler langHandler = new LangHandler("/home/boothj5/projects-git/jloc/src/test/resources/minions", javaLang);
 
-        System.out.println("Files: 0");
-        System.out.println("Code: 0");
-        System.out.println("Comments: 0");
-        System.out.println("Whitespace: 0");
+        int result = langHandler.files();
+
+        assertEquals(39, result);
     }
 }

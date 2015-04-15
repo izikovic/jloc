@@ -1,4 +1,4 @@
-package com.boothj5.jloc;
+package com.boothj5.jloc.handlers;
 
 import java.io.BufferedReader;
 import java.io.File;
