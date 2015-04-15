@@ -17,14 +17,8 @@ public class LangHandlerTest {
 
     @Before
     public void setup() {
-        List<String> lineComments = new ArrayList<>();
-        lineComments.add("//");
-
         BlockComment blockComment = new BlockComment("/*", "*/");
-        List<BlockComment> blockComments = new ArrayList<>();
-        blockComments.add(blockComment);
-
-        javaLang = new LangDef("Java", "java", lineComments, blockComments);
+        javaLang = new LangDef("Java", "java", "//", blockComment);
     }
 
     @Test
@@ -42,6 +36,24 @@ public class LangHandlerTest {
 
         int result = langHandler.blanks();
 
-        assertEquals(435, result);
+        assertEquals(436, result);
+    }
+
+    @Test
+    public void shouldReturnJavaCommentCount() throws IOException {
+        LangHandler langHandler = new LangHandler("/home/boothj5/projects-git/jloc/src/test/resources/minions", javaLang);
+
+        int result = langHandler.comments();
+
+        assertEquals(264, result);
+    }
+
+    @Test
+    public void shouldReturnJavaCodeCount() throws IOException {
+        LangHandler langHandler = new LangHandler("/home/boothj5/projects-git/jloc/src/test/resources/minions", javaLang);
+
+        int result = langHandler.code();
+
+        assertEquals(1978, result);
     }
 }

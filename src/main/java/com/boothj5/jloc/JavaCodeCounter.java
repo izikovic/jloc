@@ -4,19 +4,11 @@ import com.boothj5.jloc.handlers.LangHandler;
 import com.boothj5.jloc.languages.BlockComment;
 import com.boothj5.jloc.languages.LangDef;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class JavaCodeCounter {
     public static void main(String[] args) {
-        List<String> lineComments = new ArrayList<>();
-        lineComments.add("//");
-
         BlockComment blockComment = new BlockComment("/*", "*/");
-        List<BlockComment> blockComments = new ArrayList<>();
-        blockComments.add(blockComment);
 
-        LangDef javaLang = new LangDef("Java", "java", lineComments, blockComments);
+        LangDef javaLang = new LangDef("Java", "java", "//", blockComment);
 
         LangHandler langHandler = new LangHandler("/home/boothj5/projects-git/jloc/src/test/resources/minions", javaLang);
 

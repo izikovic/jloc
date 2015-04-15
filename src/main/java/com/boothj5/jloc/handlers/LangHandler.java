@@ -14,8 +14,8 @@ public class LangHandler {
     private final LangDef langDef;
     private final File file;
     private int files;
-    private int blank;
-    private int comment;
+    private int blanks;
+    private int comments;
     private int code;
     private boolean handled = false;
 
@@ -37,7 +37,23 @@ public class LangHandler {
             count(file.toPath());
         }
         handled = true;
-        return blank;
+        return blanks;
+    }
+
+    public int comments() throws IOException {
+        if (!handled) {
+            count(file.toPath());
+        }
+        handled = true;
+        return comments;
+    }
+
+    public int code() throws IOException {
+        if (!handled) {
+            count(file.toPath());
+        }
+        handled = true;
+        return code;
     }
 
     private void count(Path path) throws IOException {
@@ -50,9 +66,25 @@ public class LangHandler {
                     FileReader fileReader = new FileReader(entry.toFile());
                     BufferedReader bufferedReader = new BufferedReader(fileReader);
                     String line = bufferedReader.readLine();
+
+                    boolean inComment = false;
                     while (line != null) {
-                        if (line.trim().equals(""))
-                            blank++;
+                        if (!inComment && line.trim().startsWith(langDef.getBlockComment().getStart())) {
+                            inComment = true;
+                            comments++;
+                        } else if (inComment && line.trim().endsWith(langDef.getBlockComment().getEnd())) {
+                            inComment = false;
+                            comments++;
+                        } else if (inComment && !"".equals(line.trim())) {
+                            comments++;
+                        } else if (line.trim().startsWith(langDef.getLineComment())) {
+                            comments++;
+                        } else if (line.trim().equals("")) {
+                            blanks++;
+                        } else {
+                            code++;
+                        }
+
                         line = bufferedReader.readLine();
                     }
                     bufferedReader.close();

@@ -66,6 +66,8 @@ class MinionJar {
         return command;
     }
 
+    // load a plugin
+    // into the classloader
     Minion loadMinionClass(URLClassLoader loader)
             throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Class<?> clazz = Class.forName(className, true, loader);

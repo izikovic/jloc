@@ -34,6 +34,7 @@ class MinionsRunner {
         this.config = config;
     }
 
+    // kick off the minions
     void run() throws MinionsException {
         try {
             LOG.debug("Starting MinionsRunner");

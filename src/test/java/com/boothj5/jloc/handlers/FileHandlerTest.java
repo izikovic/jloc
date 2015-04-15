@@ -42,7 +42,7 @@ public class FileHandlerTest {
 
         int files = fileHandler.lineCount();
 
-        assertEquals(4034, files);
+        assertEquals(4044, files);
     }
 
 }

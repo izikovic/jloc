@@ -103,6 +103,7 @@ class MinionsConfiguration {
         return roomPassword;
     }
 
+    // user validation
     private void validateUser(Map<String, Object> user) throws MinionsException {
         if (user == null) {
             throw new MinionsException("Missing configuration property: user");
@@ -110,6 +111,7 @@ class MinionsConfiguration {
             if (user.get("name") == null) {
                 throw new MinionsException("Missing configuration property: user.name");
             } else {
+                // jabber id
                 String jid = (String) user.get("name");
                 if (!jid.contains("@")) {
                     throw new MinionsException("Invalid property user.name, specify a valid Jabber ID");

@@ -20,7 +20,7 @@
     > find . -type f | wc -l
     > 62
     > find . -type f -exec cat {} + | wc -l
-    > 4034
+    > 4044
 
 3) Count code/whitespace/comments of Java code recursively in directory
 
@@ -29,7 +29,7 @@
     > -------------------------------------------------------------------------------
     > Language                     files          blank        comment           code
     > -------------------------------------------------------------------------------
-    > Java                            39            435            255           1978
+    > Java                            39            436            264           1978
 
 4) Count code/whitespace/comments for given languages recursively in directory
 

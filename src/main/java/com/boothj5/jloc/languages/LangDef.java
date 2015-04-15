@@ -1,18 +1,16 @@
 package com.boothj5.jloc.languages;
 
-import java.util.List;
-
 public class LangDef {
     private final String name;
     private final String extension;
-    private final List<String> lineComments;
-    private final List<BlockComment> blockComments;
+    private final String lineComment;
+    private final BlockComment blockComment;
 
-    public LangDef(String name, String extension, List<String> lineComments, List<BlockComment> blockComments) {
+    public LangDef(String name, String extension, String lineComment, BlockComment blockComment) {
         this.name = name;
         this.extension = extension;
-        this.lineComments = lineComments;
-        this.blockComments = blockComments;
+        this.lineComment = lineComment;
+        this.blockComment = blockComment;
     }
     public String getName() {
         return name;
@@ -20,10 +18,10 @@ public class LangDef {
     public String getExtension() {
         return extension;
     }
-    public List<String> getLineComments() {
-        return lineComments;
+    public String getLineComment() {
+        return lineComment;
     }
-    public List<BlockComment> getBlockComments() {
-        return blockComments;
+    public BlockComment getBlockComment() {
+        return blockComment;
     }
 }
