@@ -6,12 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 public class LangHandlerTest {
+    private static final String PROJECT_ROOT = "/Users/cirrus/projects-git/jloc/";
 
     private LangDef javaLang;
 
@@ -23,7 +22,7 @@ public class LangHandlerTest {
 
     @Test
     public void shouldReturnJavaFileCount() throws IOException {
-        LangHandler langHandler = new LangHandler("/home/boothj5/projects-git/jloc/src/test/resources/minions", javaLang);
+        LangHandler langHandler = new LangHandler(PROJECT_ROOT + "src/test/resources/minions", javaLang);
 
         int result = langHandler.files();
 
@@ -32,7 +31,7 @@ public class LangHandlerTest {
 
     @Test
     public void shouldReturnJavaBlankCount() throws IOException {
-        LangHandler langHandler = new LangHandler("/home/boothj5/projects-git/jloc/src/test/resources/minions", javaLang);
+        LangHandler langHandler = new LangHandler(PROJECT_ROOT + "src/test/resources/minions", javaLang);
 
         int result = langHandler.blanks();
 
@@ -41,7 +40,7 @@ public class LangHandlerTest {
 
     @Test
     public void shouldReturnJavaCommentCount() throws IOException {
-        LangHandler langHandler = new LangHandler("/home/boothj5/projects-git/jloc/src/test/resources/minions", javaLang);
+        LangHandler langHandler = new LangHandler(PROJECT_ROOT + "src/test/resources/minions", javaLang);
 
         int result = langHandler.comments();
 
@@ -50,7 +49,7 @@ public class LangHandlerTest {
 
     @Test
     public void shouldReturnJavaCodeCount() throws IOException {
-        LangHandler langHandler = new LangHandler("/home/boothj5/projects-git/jloc/src/test/resources/minions", javaLang);
+        LangHandler langHandler = new LangHandler(PROJECT_ROOT + "src/test/resources/minions", javaLang);
 
         int result = langHandler.code();
 
@@ -59,7 +58,7 @@ public class LangHandlerTest {
 
     @Test
     public void shouldReturnJavaStats() throws IOException {
-        LangHandler langHandler = new LangHandler("/home/boothj5/projects-git/jloc/src/test/resources/minions", javaLang);
+        LangHandler langHandler = new LangHandler(PROJECT_ROOT + "src/test/resources/minions", javaLang);
 
         int files = langHandler.files();
         int code = langHandler.code();
