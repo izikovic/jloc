@@ -28,6 +28,7 @@ class MinionsListener implements PacketListener {
         messageHandlerFactory = new MessageHandlerFactory(minions, minionsPrefix, muc, myNick);
     }
 
+    // process packet
     @Override
     public void processPacket(Packet packet) {
         if (packet instanceof Message) {
